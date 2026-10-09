@@ -1,0 +1,22 @@
+{
+  "name": "@technyst-crm/api",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@technyst-crm/auth": "*",
+    "@technyst-crm/db": "*",
+    "@trpc/client": "^11.18.0",
+    "@trpc/server": "^11.18.0",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@technyst-crm/config": "*",
+    "typescript": "^6.0.3"
+  }
+}

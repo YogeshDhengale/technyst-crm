@@ -1,0 +1,51 @@
+{
+  "name": "technyst-crm",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "check-types": "turbo run check-types",
+    "dev:web": "turbo run dev -F web --",
+    "dev:server": "turbo run dev -F server --",
+    "db:push": "turbo run db:push -F @technyst-crm/db --",
+    "db:studio": "turbo run db:studio -F @technyst-crm/db --",
+    "db:generate": "turbo run db:generate -F @technyst-crm/db --",
+    "db:migrate": "turbo run db:migrate -F @technyst-crm/db --",
+    "db:start": "docker compose up -d postgres",
+    "db:watch": "docker compose up postgres",
+    "db:stop": "docker compose stop postgres",
+    "db:down": "docker compose down postgres",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "env:generate": "varlock codegen --path ./apps/web/ && varlock codegen --path ./apps/server/ && varlock codegen --path ./packages/db/",
+    "postinstall": "varlock codegen --path ./apps/web/ && varlock codegen --path ./apps/server/ && varlock codegen --path ./packages/db/",
+    "auth:generate": "cd apps/server && npm run auth:generate"
+  },
+  "dependencies": {
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@technyst-crm/config": "*",
+    "@types/bun": "^1.4.2",
+    "turbo": "^2.10.12",
+    "typescript": "^6.0.3",
+    "varlock": "1.18.0"
+  },
+  "overrides": {
+    "@next/env": "npm:@varlock/nextjs-integration@1.2.2"
+  },
+  "packageManager": "npm@12.1.0",
+  "allowScripts": {
+    "esbuild": true,
+    "sharp": true,
+    "@prisma/engines": true,
+    "prisma": true
+  }
+}

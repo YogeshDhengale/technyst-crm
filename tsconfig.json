@@ -1,0 +1,3 @@
+{
+  "extends": "@technyst-crm/config/tsconfig.base.json"
+}
