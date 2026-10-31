@@ -24,9 +24,9 @@ app.use(
 app.on(["POST", "GET"], "/api/auth/*", async (c) => auth.handler(c.req.raw));
 
 app.use(
-  "/trpc/*",
+  "/api/trpc/*",
   trpcServer({
-    endpoint: "/trpc",
+    endpoint: "/api/trpc",
     router: appRouter,
     createContext: (_opts, context) => {
       return createContext({ context });
